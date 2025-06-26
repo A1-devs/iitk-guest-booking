@@ -1,5 +1,6 @@
 
 ## 1.) Clone/Fork the repo. 
+Also make sure you have node installed. If not, go to node.js official site and download Windows Installer(.msl) by clicking on "Install Node.js" on homepage.
 
 ## 2.) Navigate to the folder "iitk-booking" through vscode terminal and type the following . It will install all the dependencies of both backend and frontend on your machine.  ##
 ```
@@ -23,8 +24,8 @@ npm run dev
 2. ) Sign Up using Google with the following credentials
    
 #### username - acaprojecta1devs@gmail.com  ####
-#### google - password - a1devs@123
-#### password - makhmali@123 ####
+#### google password - a1devs@123
+#### MongoDB password - makhmali@123 ####
 
 3.) go to "clusters" on the left.
 
