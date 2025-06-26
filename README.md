@@ -24,7 +24,7 @@ npm run dev
    
 #### username - acaprojecta1devs@gmail.com  ####
 
-#### password - a1devs@123  ####
+#### password - makhmali@123 ####
 
 3.) go to "clusters" on the left.
 
