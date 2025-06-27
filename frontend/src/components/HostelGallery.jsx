@@ -4,7 +4,7 @@ import "./HostelGallery.css";
 const HostelGallery = () => {
   const hostels = [
     {
-      name: "Visitors' Hostel",
+      name: "Visitors' Hostel 1",
       images: [
         "https://www.iitk.ac.in/vh/images/slider/slider1.jpg",
         "https://www.iitk.ac.in/vh/images/slider/vh-5.jpg",
