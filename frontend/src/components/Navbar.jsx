@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-
+<Link to="/gallery">Gallery</Link>;
 const Navbar = () => {
   const navigate = useNavigate();
   const loggedIn = !!localStorage.getItem("token");
