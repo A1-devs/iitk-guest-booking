@@ -53,6 +53,7 @@ const AvailableRooms = () => {
               <div>
                 <span className="font-semibold">{room.name}</span> | {room.hall} | {room.type}
               </div>
+              <div className="mt-1"><b>Price:</b> ₹{room.price}</div>
               <button className="btn btn-outline mt-2" onClick={() => handleSelectRoom(room)}>
                 Book This Room
               </button>

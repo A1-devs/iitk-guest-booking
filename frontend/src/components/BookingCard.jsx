@@ -7,12 +7,12 @@ const BookingCard = ({ booking, onCancel }) => (
       <div className="flex flex-col sm:flex-row gap-2">
         <div><b>Hall:</b> {booking.roomId?.hall}</div>
         <div><b>Type:</b> {booking.roomId?.type}</div>
+        <div><b>Price:</b> ₹{booking.roomId?.price}</div>
       </div>
       <div>
         <b>From:</b> {new Date(booking.fromDate).toLocaleDateString()} <b>To:</b> {new Date(booking.toDate).toLocaleDateString()}
       </div>
       <div><b>Status:</b> {booking.status}</div>
-      <div><b>Payment UTR:</b> {booking.paymentUTR}</div>
       <button className="btn btn-error w-fit gap-2" onClick={onCancel}>
         <Trash2 size={16} /> Cancel Booking
       </button>

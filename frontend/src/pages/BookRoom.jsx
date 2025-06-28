@@ -6,17 +6,17 @@ const BookRoom = () => {
   const { state } = useLocation(); // contains room and date info
   const navigate = useNavigate();
 
-  // Dummy payment handler — replace with real payment logic!
-  const handlePaymentAndBook = async () => {
-    // You'd invoke Razorpay checkout here, get payment_id/UTR on success
-    const paymentUTR = prompt("Enter Payment UTR (replace with Razorpay in production):");
-    if (!paymentUTR) return toast.error("Payment failed or cancelled.");
+  const handleBook = async () => {
+    const confirm = window.confirm(
+      `Are you sure you want to book ${state.room.name} for ₹${state.room.price}?`
+    );
+    if (!confirm) return;
+
     try {
       await api.post("/bookings", {
         roomId: state.room._id,
         fromDate: state.from,
         toDate: state.to,
-        paymentUTR, // in production, use payment_id returned by Razorpay
       });
       toast.success("Booking successful!");
       navigate("/bookings");
@@ -33,11 +33,12 @@ const BookRoom = () => {
         <h2 className="text-xl font-bold mb-4">Book Room: {state.room.name}</h2>
         <div>Hall: {state.room.hall}</div>
         <div>Type: {state.room.type}</div>
+        <div>Price: <b>₹{state.room.price}</b></div>
         <div>
           <b>From:</b> {state.from} <b>To:</b> {state.to}
         </div>
-        <button className="btn btn-primary mt-6 w-full" onClick={handlePaymentAndBook}>
-          Pay & Book
+        <button className="btn btn-primary mt-6 w-full" onClick={handleBook}>
+          Book Room
         </button>
       </div>
     </div>

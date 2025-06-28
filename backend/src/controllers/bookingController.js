@@ -1,7 +1,7 @@
 import Booking from '../models/Booking.js';
 
 export const createBooking = async (req, res) => {
-  const { roomId, fromDate, toDate, paymentUTR } = req.body;
+  const { roomId, fromDate, toDate } = req.body;
   const userId = req.user.id;
 
   try {
@@ -9,8 +9,7 @@ export const createBooking = async (req, res) => {
       userId,
       roomId,
       fromDate,
-      toDate,
-      paymentUTR
+      toDate
     });
     await booking.save();
     res.status(201).json({ message: 'Booking successful' });
@@ -42,4 +41,3 @@ export const cancelBooking = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
-

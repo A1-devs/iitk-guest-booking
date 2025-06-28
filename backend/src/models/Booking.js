@@ -5,7 +5,6 @@ const bookingSchema = new mongoose.Schema({
   roomId: { type: mongoose.Schema.Types.ObjectId, ref: 'Room' },
   fromDate: Date,
   toDate: Date,
-  paymentUTR: String,
   status: { type: String, default: 'confirmed' }
 });
 
