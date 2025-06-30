@@ -1,5 +1,7 @@
-import express from 'express';
 import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+//import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
 
@@ -7,7 +9,7 @@ import authRoutes from './routes/authRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 
-dotenv.config();
+//dotenv.config();
 const app = express();
 
 app.use(cors());

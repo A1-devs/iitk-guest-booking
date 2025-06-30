@@ -7,6 +7,8 @@ import AvailableRooms from "./pages/AvailableRooms";
 import BookRoom from "./pages/BookRoom";
 import PrivateRoute from "./components/PrivateRoute";
 import Gallery from "./pages/Gallery";
+import ForgotPassword from "./pages/ForgotPassword";      // 👈 import added
+import ResetPassword from "./pages/ResetPassword";        // 👈 import added
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" element={<Navigate to="/bookings" />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />   {/* 👈 added */}
+        <Route path="/reset-password/:token" element={<ResetPassword />} /> {/* 👈 added */}
 
         <Route path="/bookings" element={<PrivateRoute><UserBookings /></PrivateRoute>} />
         <Route path="/rooms" element={<PrivateRoute><AvailableRooms /></PrivateRoute>} />
@@ -27,4 +31,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
