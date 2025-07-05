@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   const loggedIn = !!localStorage.getItem("token");
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("isAdmin"); // Optional: Clear isAdmin on logout
     navigate("/login");
   };
 
@@ -22,6 +24,11 @@ const Navbar = () => {
             <Link to="/bookings" className="btn btn-ghost">
               My Bookings
             </Link>
+            {isAdmin && (
+              <Link to="/admin/dashboard" className="btn btn-ghost">
+                Admin Dashboard
+              </Link>
+            )}
             <button className="btn btn-outline" onClick={handleLogout}>
               Logout
             </button>

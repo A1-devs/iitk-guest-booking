@@ -9,9 +9,14 @@ import authRoutes from './routes/authRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 
-//dotenv.config();
-const app = express();
+import adminRoutes from './routes/adminRoutes.js';
 
+const app = express();
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow your frontend origin
+  credentials: true                // If you use cookies or need credentials
+}));
+app.use('/api/admin', adminRoutes);
 app.use(cors());
 app.use(express.json());
 
