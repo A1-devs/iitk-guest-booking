@@ -23,10 +23,6 @@ npm run dev
 
 2. ) Sign Up using Google with the following credentials
    
-#### username - acaprojecta1devs@gmail.com  ####
-#### google password - a1devs@123
-#### MongoDB password - makhmali@123 ####
-
 3.) go to "clusters" on the left.
 
 4.) then browse collections.
