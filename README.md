@@ -20,12 +20,10 @@ npm run dev
 ## Steps to use MongoDB  ##
 
 1.) Go to MongoDB website.
-
-2. ) Sign Up using Google with the following credentials
    
-3.) go to "clusters" on the left.
+2.) go to "clusters" on the left.
 
-4.) then browse collections.
+3.) then browse collections.
 
-5.) any request made through the frontend now should visible here after refreshing using "refresh button on right"
+4.) any request made through the frontend now should visible here after refreshing using "refresh button on right"
 
