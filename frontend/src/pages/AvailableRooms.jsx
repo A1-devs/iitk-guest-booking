@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "../api/axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +9,30 @@ const AvailableRooms = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Today's date in YYYY-MM-DD format
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  // Helper function for date validation
+  const isValidDateRange = (from, to) => {
+    if (!from || !to) return { valid: false, message: "Select both check-in and check-out dates." };
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const fromDate = new Date(from);
+    fromDate.setHours(0, 0, 0, 0);
+    const toDate = new Date(to);
+    toDate.setHours(0, 0, 0, 0);
+
+    if (fromDate < today) return { valid: false, message: "Check-in date cannot be in the past." };
+    if (toDate <= fromDate) return { valid: false, message: "Check-out date must be after check-in date." };
+
+    return { valid: true };
+  };
+
   const fetchRooms = async () => {
-    if (!dates.from || !dates.to) {
-      toast.error("Select both check-in and check-out dates.");
+    const { valid, message } = isValidDateRange(dates.from, dates.to);
+    if (!valid) {
+      toast.error(message);
       return;
     }
     setLoading(true);
@@ -34,13 +55,30 @@ const AvailableRooms = () => {
       <div className="flex flex-col sm:flex-row gap-4 mb-4 items-end">
         <div>
           <label className="label">Check-in</label>
-          <input type="date" className="input input-bordered" value={dates.from}
-            onChange={e => setDates({ ...dates, from: e.target.value })} />
+          <input
+            type="date"
+            className="input input-bordered"
+            value={dates.from}
+            min={todayStr}
+            onChange={e => {
+              setDates({ ...dates, from: e.target.value });
+              // Reset check-out if it's now before the new check-in
+              if (dates.to && e.target.value && dates.to <= e.target.value) {
+                setDates(prev => ({ ...prev, to: "" }));
+              }
+            }}
+          />
         </div>
         <div>
           <label className="label">Check-out</label>
-          <input type="date" className="input input-bordered" value={dates.to}
-            onChange={e => setDates({ ...dates, to: e.target.value })} />
+          <input
+            type="date"
+            className="input input-bordered"
+            value={dates.to}
+            min={dates.from ? dates.from : todayStr}
+            onChange={e => setDates({ ...dates, to: e.target.value })}
+            disabled={!dates.from}
+          />
         </div>
         <button className="btn btn-primary" onClick={fetchRooms} disabled={loading}>
           {loading ? "Searching..." : "Show Available"}
