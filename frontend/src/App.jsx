@@ -7,20 +7,19 @@ import AvailableRooms from "./pages/AvailableRooms";
 import BookRoom from "./pages/BookRoom";
 import PrivateRoute from "./components/PrivateRoute";
 import Gallery from "./pages/Gallery";
-import ForgotPassword from "./pages/ForgotPassword";      // 👈 import added
-import ResetPassword from "./pages/ResetPassword";        // 👈 import added
+import ForgotPassword from "./pages/ForgotPassword";      
+import ResetPassword from "./pages/ResetPassword";        
 import { Toaster } from "react-hot-toast";
 import AdminDashboard from './pages/AdminDashboard';
 import AdminBookings from './pages/AdminBookings';
 import AdminUsers from './pages/AdminUsers';
+import AdminRoute from "./components/AdminRoute";
 
-// Inside your <Routes>
-// This route is for the admin dashboard, which is protected by the PrivateRoute component.
 function App() {
   return (
     <div>
       <Navbar />
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       <Routes>
         <Route path="/" element={<Navigate to="/bookings" />} />
         <Route path="/register" element={<Register />} />
@@ -31,9 +30,9 @@ function App() {
         <Route path="/rooms" element={<PrivateRoute><AvailableRooms /></PrivateRoute>} />
         <Route path="/book" element={<PrivateRoute><BookRoom /></PrivateRoute>} />
         <Route path="/gallery" element={<PrivateRoute><Gallery /></PrivateRoute>} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/bookings" element={<AdminBookings />} />
-        <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>}/>
+        <Route path="/admin/bookings" element={<AdminRoute><AdminBookings /></AdminRoute>} />
+        <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
       </Routes>
     </div>
   );

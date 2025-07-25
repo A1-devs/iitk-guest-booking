@@ -6,6 +6,4 @@ const requireAdmin = (req, res, next) => {
 };
 
 export default requireAdmin;
-// This middleware checks if the user is an admin.
-// If not, it responds with a 403 Forbidden status and an error message.
-// It should be used in routes that require admin privileges, like room management.
+
